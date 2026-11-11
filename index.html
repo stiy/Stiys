@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="STIY — a lightweight browser-style web app.">
+  <title>STIY Browser</title>
+  <link rel="icon" href="assets/stiy.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="chrome">
+      <div class="tab-strip" id="tabStrip" role="tablist" aria-label="Browser tabs"></div>
+      <button class="icon-button new-tab" id="newTabBtn" aria-label="New tab" title="New tab">+</button>
+      <div class="window-spacer"></div>
+    </header>
+
+    <nav class="toolbar" aria-label="Browser controls">
+      <div class="nav-controls">
+        <button class="icon-button" id="backBtn" title="Back" aria-label="Back" disabled>‹</button>
+        <button class="icon-button" id="forwardBtn" title="Forward" aria-label="Forward" disabled>›</button>
+        <button class="icon-button" id="reloadBtn" title="Reload" aria-label="Reload">↻</button>
+        <button class="icon-button home-button" id="homeBtn" title="Home" aria-label="Home">⌂</button>
+      </div>
+      <form class="address-form" id="addressForm">
+        <span class="security-mark" aria-hidden="true">●</span>
+        <input id="addressInput" type="text" inputmode="url" autocomplete="off" spellcheck="false"
+               placeholder="Search Google or enter a URL" aria-label="Search or enter website address">
+        <button class="address-go" type="submit" aria-label="Go">↵</button>
+      </form>
+      <div class="toolbar-actions">
+        <button class="icon-button" id="bookmarkBtn" title="Bookmark this page" aria-label="Bookmark this page">☆</button>
+        <button class="icon-button" id="bookmarksBtn" title="Bookmarks" aria-label="Bookmarks">▤</button>
+        <button class="icon-button" id="settingsBtn" title="Settings" aria-label="Settings">⚙</button>
+      </div>
+    </nav>
+
+    <section class="viewport" id="viewport">
+      <section class="home-view" id="homeView">
+        <div class="home-content">
+          <div class="brand-mark">STIY</div>
+          <p class="tagline">A better way to browse.</p>
+          <form class="home-search" id="homeSearchForm">
+            <span aria-hidden="true">⌕</span>
+            <input id="homeSearchInput" type="text" autocomplete="off" placeholder="Search Google or enter a website">
+            <button type="submit" aria-label="Search">→</button>
+          </form>
+          <div class="home-shortcuts" id="homeShortcuts">
+            <button class="shortcut" data-url="https://www.google.com"><span>G</span><small>Google</small></button>
+            <button class="shortcut" data-url="https://www.wikipedia.org"><span>W</span><small>Wikipedia</small></button>
+            <button class="shortcut" data-url="https://www.youtube.com"><span>▶</span><small>YouTube</small></button>
+          </div>
+          <p class="home-note">Websites open here when they allow embedding. Some sites require their own browser window or app.</p>
+        </div>
+      </section>
+
+      <section class="page-view hidden" id="pageView" aria-label="Website display">
+        <div class="frame-wrap" id="frameWrap">
+          <iframe id="pageFrame" title="Website content" allow="fullscreen; autoplay; clipboard-read; clipboard-write; gamepad"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="embed-notice" id="embedNotice">
+          <strong>Having trouble displaying this website?</strong>
+          <span>Some websites prevent being shown inside another website. STIY can't override those restrictions.</span>
+          <button id="noticeDismiss">Dismiss</button>
+        </div>
+      </section>
+
+      <section class="utility-view hidden" id="utilityView">
+        <div class="utility-panel" id="utilityPanel"></div>
+      </section>
+    </section>
+
+    <footer class="statusbar">
+      <span id="statusText">Ready</span>
+      <span>STIY</span>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
